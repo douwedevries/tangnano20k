@@ -6,7 +6,6 @@ FAMILY='GW2A-18C'
 
 # Verilog RTL synthesis
 read -p "Press Enter to start yosys RTL synthesis..."
-# yosys -D LEDS_NR=6 -p "read_verilog topentity.v; synth_gowin -json topentity.json"
 yosys -p "read_verilog topentity.v; synth_gowin -json topentity.json"
 
 # FPGA place and route
@@ -20,11 +19,6 @@ nextpnr-himbaechel --json topentity.json \
 # Gowin FPGA bitstream
 read -p "Press Enter to start Gowin bitstream generation..."
 gowin_pack -d $FAMILY -o pack.fs pnrtopentity.json
-
-# Optionally unpack and visualize
-# read -p "Press Enter to unpack and visualize..."
-# gowin_unpack -d $DEVICE -o unpack.v pack.fs
-# yosys -p "read_verilog -lib +/gowin/cells_sim.v; clean -purge; show" unpack.v
 
 # Programming FPGA
 read -p "Press Enter to program FPGA..."
