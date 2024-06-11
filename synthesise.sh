@@ -4,6 +4,9 @@ BOARD='tangnano20k'
 DEVICE='GW2AR-LV18QN88C8/I7'
 FAMILY='GW2A-18C'
 
+# Clear terminal buffer (for searching warnings and errors)
+clear
+
 # Verilog RTL synthesis
 read -p "Press Enter to start yosys RTL synthesis..."
 yosys -p "read_verilog topentity.v; synth_gowin -json topentity.json"
